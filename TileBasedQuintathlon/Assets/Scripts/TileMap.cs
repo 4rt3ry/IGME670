@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class TileMap: MonoBehaviour
 {
-    private AudioSource[,] tileSounds; //each tile has its own AudioSource
-
     public int[,] tileIndicies; //the number associated with a tile, 0 for mountain, 1 for woods, 2 for paved road, 3 for pond, 4 for grass field
 
     public int tileIndex;
@@ -26,8 +24,6 @@ public class TileMap: MonoBehaviour
 
         width = height = 10;
 
-        tileSounds = new AudioSource[width, height];
-
         tileIndicies = new int[width, height];
 
         PlaceTiles();
@@ -44,10 +40,8 @@ public class TileMap: MonoBehaviour
             for (j = 0; j < height; j++)
             {
                 int index = Random.Range(0, prefabs.Length); //int Random.Range() will return an integer between 0 and prefabs.Length-1
-                tile = Instantiate(prefabs[index]);
-                tile.transform.SetParent(transform);
-                tile.transform.position = new Vector3(i, j, 0);
-                tileSounds[i, j] = tile.GetComponent<AudioSource>();
+                tile = Instantiate(prefabs[index], new Vector2(i, j), Quaternion.identity, transform);
+                //tileSounds[i, j] = tile.GetComponent<AudioSource>();
                 tileIndicies[i, j] = index;
             }
         }
@@ -58,7 +52,7 @@ public class TileMap: MonoBehaviour
         if (i >= 0 && j >= 0 && i < width && j < height)
         {
            //player was previously inside TileMap, so stop the sound from it
-           tileSounds[i, j].Stop();
+           //tileSounds[i, j].Stop();
         }
 
         //update indicies in response to WASD key presses
@@ -79,7 +73,7 @@ public class TileMap: MonoBehaviour
             outsideTileMapAudioSource.Stop();
 
         //player is inside the TileMap, so start the sound from it
-        tileSounds[i, j].Play();
+        //tileSounds[i, j].Play();
 
         tileIndex = tileIndicies[i, j]; //used in Player to set action figure sprite for current tile
     }

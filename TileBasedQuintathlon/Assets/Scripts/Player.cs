@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public TileMap map;
@@ -20,41 +20,24 @@ public class Player : MonoBehaviour
         //sprites = new Sprite[6]; //initialized in the Inspector
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-       
-    }
-    
-    void Update()
-    {
-        
-       
-      
-        if (Input.GetKeyDown(KeyCode.A) && (transform.position.x > -1))
-        {
-            transform.position += Vector3.left; //more accurate than transform.Translate(Vector3.left);
-            map.AdjustSound(-1, 0, transform.position);
-            spriteRenderer.sprite = sprites[map.tileIndex];
-        }
-        if (Input.GetKeyDown(KeyCode.W) && (transform.position.y < map.height))
-        {
-            transform.position += Vector3.up; //more accurate than transform.Translate(Vector3.up);
-            map.AdjustSound(0, +1, transform.position);
-            spriteRenderer.sprite = sprites[map.tileIndex];
-        }
-        if (Input.GetKeyDown(KeyCode.S) && (transform.position.y > -1))
-        {
-            transform.position += Vector3.down; //more accurate than transform.Translate(Vector3.down);
-            map.AdjustSound(0, -1, transform.position);
-            spriteRenderer.sprite = sprites[map.tileIndex];
-        }
-        if (Input.GetKeyDown(KeyCode.D) && (transform.position.x < map.width))
-        {
-            transform.position += Vector3.right;  //more accurate than transform.Translate(Vector3.right);
-            map.AdjustSound(+1, 0, transform.position);
-            spriteRenderer.sprite = sprites[map.tileIndex];
-        }
 
         if (!audioSource.isPlaying)
             audioSource.Play();
     }
 
+    private void Move(Vector2 input)
+    {
+        transform.position += new Vector3(Mathf.Floor(input.x), Mathf.Floor(input.y));
+        map.AdjustSound(Mathf.FloorToInt(input.x), Mathf.FloorToInt(input.y), transform.position);
+        spriteRenderer.sprite = sprites[map.tileIndex];
+    }
+
+
+    public void OnMove(InputAction.CallbackContext callback)
+    {
+        if (callback.phase == InputActionPhase.Performed)
+        {
+            Move(callback.ReadValue<Vector2>());
+        }
+    }
 }

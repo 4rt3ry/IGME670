@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3438858408087892452}
   - component: {fileID: 3438858408087892454}
   - component: {fileID: -1961201833636729221}
+  - component: {fileID: -4883407569840170786}
   m_Layer: 0
   m_Name: Tile 3
   m_TagString: Untagged
@@ -181,3 +182,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4883407569840170786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438858408087892453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc6ede6f13629449ac2ce655b97da9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 8300000, guid: a5b1f96c6a50344a0a7a11a3a8308bf3, type: 3}
