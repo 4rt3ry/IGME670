@@ -3,33 +3,27 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public TileMap map;
-
-    public Sprite[] sprites;
-
-    private SpriteRenderer spriteRenderer;
-
-    AudioSource audioSource;
+    private Animator animator;
 
 
     private void Start()
     {
         transform.position = new Vector3(-1, -1, 0);
         map.AdjustSound(0, 0, transform.position);  //NOTE: script execution order set to ensure TileMap Start() runs before this Player Start() method
-        audioSource = GetComponent<AudioSource>();
 
         //sprites = new Sprite[6]; //initialized in the Inspector
 
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-
-        if (!audioSource.isPlaying)
-            audioSource.Play();
+        animator = GetComponent<Animator>();
     }
 
     private void Move(Vector2 input)
     {
+        // Move position
         transform.position += new Vector3(Mathf.Floor(input.x), Mathf.Floor(input.y));
         map.AdjustSound(Mathf.FloorToInt(input.x), Mathf.FloorToInt(input.y), transform.position);
-        spriteRenderer.sprite = sprites[map.tileIndex];
+
+        // Set animation state
+        animator.SetInteger("animation", map.tileIndex);
     }
 
 
