@@ -1,0 +1,102 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "Piano",
+            "id": "0218f967-016b-4385-b41c-7c05cc28b4a4",
+            "actions": [
+                {
+                    "name": "ToggleMute",
+                    "type": "Button",
+                    "id": "4bd3ff60-11cb-4494-95cf-6aa7fa6f1796",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleDelay",
+                    "type": "Button",
+                    "id": "88afdbe1-b2e4-4a73-9983-3275bcc85938",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3be3dc7c-148e-4555-a019-359494ecbf5c",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleMute",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1da993db-9c88-4def-b1cd-4bae5f8a28dd",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleDelay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Drums",
+            "id": "f6738fa0-9a1a-44f7-840a-64c62a30d4da",
+            "actions": [
+                {
+                    "name": "ToggleMute",
+                    "type": "Button",
+                    "id": "89496e88-c1a8-4d24-829b-92dfcd6cbc1e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleDelay",
+                    "type": "Button",
+                    "id": "4fc29855-f282-4a97-977d-b87085709ff5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1980c75e-5915-42a6-872c-f3100c0f9bc3",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleMute",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc3909a6-d1d9-46af-9e70-14ab390e1d7d",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleDelay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
